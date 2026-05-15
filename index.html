@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Career Day — Spring Recital 2026</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg-page:       #f5f0eb;
+      --bg-card:       #ffffff;
+      --bg-subtle:     #f1efe8;
+      --bg-hover:      #e8e5df;
+      --border-main:   #b4b2a9;
+      --border-light:  #d3d1c7;
+      --text-primary:  #1a1a18;
+      --text-secondary:#888780;
+      --text-muted:    #b4b2a9;
+
+      --sara-bg:       #FAECE7;
+      --sara-bg-hover: #F5C4B3;
+      --sara-text:     #712B13;
+      --sara-meta:     #993C1D;
+      --sara-tag-bg:   #F5C4B3;
+      --sara-tag-text: #993C1D;
+
+      --piper-bg:       #EEEDFE;
+      --piper-bg-hover: #CECBF6;
+      --piper-text:     #3C3489;
+      --piper-meta:     #534AB7;
+      --piper-tag-bg:   #CECBF6;
+      --piper-tag-text: #534AB7;
+
+      --both-bg:       #E1F5EE;
+      --both-bg-hover: #9FE1CB;
+      --both-text:     #085041;
+      --both-meta:     #0F6E56;
+
+      --finale-bg:       #FAEEDA;
+      --finale-bg-hover: #FAC775;
+      --finale-text:     #633806;
+      --finale-meta:     #854F0B;
+
+      --toggle-bg:     #1a1a18;
+      --toggle-text:   #f5f0eb;
+    }
+
+    [data-theme="dark"] {
+      --bg-page:       #0e0e0d;
+      --bg-card:       #1c1c1a;
+      --bg-subtle:     #252523;
+      --bg-hover:      #2e2e2b;
+      --border-main:   #444441;
+      --border-light:  #333331;
+      --text-primary:  #f0ede8;
+      --text-secondary:#888780;
+      --text-muted:    #5f5e5a;
+
+      --sara-bg:       #3d1a0e;
+      --sara-bg-hover: #5a2513;
+      --sara-text:     #F5C4B3;
+      --sara-meta:     #F0997B;
+      --sara-tag-bg:   #5a2513;
+      --sara-tag-text: #F5C4B3;
+
+      --piper-bg:       #1e1b40;
+      --piper-bg-hover: #2d2860;
+      --piper-text:     #CECBF6;
+      --piper-meta:     #AFA9EC;
+      --piper-tag-bg:   #2d2860;
+      --piper-tag-text: #CECBF6;
+
+      --both-bg:       #072e22;
+      --both-bg-hover: #0a4232;
+      --both-text:     #9FE1CB;
+      --both-meta:     #5DCAA5;
+
+      --finale-bg:       #2e1f05;
+      --finale-bg-hover: #452f08;
+      --finale-text:     #FAC775;
+      --finale-meta:     #EF9F27;
+
+      --toggle-bg:     #f0ede8;
+      --toggle-text:   #1a1a18;
+    }
+
+    body {
+      font-family: Georgia, 'Times New Roman', serif;
+      background: var(--bg-page);
+      color: var(--text-primary);
+      min-height: 100vh;
+      padding: 1rem;
+      transition: background 0.25s, color 0.25s;
+    }
+
+    .toggle-bar {
+      max-width: 680px;
+      margin: 0 auto 1rem;
+    }
+
+    .toggle-btn {
+      width: 100%;
+      padding: 0.9rem 1.25rem;
+      background: var(--toggle-bg);
+      color: var(--toggle-text);
+      border: none;
+      border-radius: 10px;
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      font-size: 16px;
+      font-weight: 500;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      transition: background 0.25s, color 0.25s, opacity 0.15s;
+      letter-spacing: 0.01em;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    .toggle-btn:active { opacity: 0.75; }
+    .toggle-icon { font-size: 20px; line-height: 1; }
+
+    .program {
+      max-width: 680px;
+      margin: 0 auto;
+      background: var(--bg-card);
+      border-radius: 12px;
+      border: 0.5px solid var(--border-light);
+      padding: 0 0 2.5rem;
+      transition: background 0.25s, border-color 0.25s;
+    }
+
+    .header {
+      text-align: center;
+      padding: 2rem 1.5rem 1.5rem;
+      border-bottom: 2px solid var(--border-main);
+      margin-bottom: 1.25rem;
+    }
+
+    .title-sub {
+      font-size: 11px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--text-secondary);
+      margin: 0 0 0.4rem;
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    }
+
+    .title-main {
+      font-size: 26px;
+      font-weight: 500;
+      margin: 0 0 0.3rem;
+      color: var(--text-primary);
+    }
+
+    .title-year {
+      font-size: 13px;
+      color: var(--text-secondary);
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    }
+
+    .legend {
+      display: flex;
+      gap: 12px;
+      justify-content: center;
+      flex-wrap: wrap;
+      margin: 0 1rem 1.25rem;
+      padding: 0.65rem 1rem;
+      background: var(--bg-subtle);
+      border-radius: 8px;
+    }
+
+    .legend-item {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 12px;
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      color: var(--text-primary);
+    }
+
+    .legend-dot { width: 12px; height: 12px; border-radius: 3px; flex-shrink: 0; }
+
+    .act-header {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      font-size: 11px;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      font-weight: 500;
+      color: var(--text-muted);
+      padding: 0.5rem 1rem;
+      margin: 1rem 0 0;
+      border-top: 0.5px solid var(--border-light);
+    }
+
+    .intermission {
+      text-align: center;
+      font-size: 11px;
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      padding: 0.8rem 0;
+      border-top: 0.5px dashed var(--border-light);
+      border-bottom: 0.5px dashed var(--border-light);
+      margin: 0.4rem 1rem;
+    }
+
+    .row {
+      display: grid;
+      grid-template-columns: 34px 1fr auto;
+      align-items: baseline;
+      gap: 0 10px;
+      padding: 0.5rem 1rem;
+      border-radius: 6px;
+      margin: 0 0.25rem;
+      transition: background 0.15s;
+    }
+
+    .row:hover { background: var(--bg-hover); }
+
+    .row-num {
+      font-size: 12px;
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      color: var(--text-muted);
+      text-align: right;
+    }
+
+    .row-song { font-size: 15px; color: var(--text-primary); }
+
+    .row-group {
+      font-size: 12px;
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      color: var(--text-secondary);
+      text-align: right;
+      white-space: nowrap;
+    }
+
+    .sara { background: var(--sara-bg); }
+    .sara:hover { background: var(--sara-bg-hover); }
+    .sara .row-num, .sara .row-group { color: var(--sara-meta); }
+    .sara .row-song { color: var(--sara-text); }
+
+    .piper { background: var(--piper-bg); }
+    .piper:hover { background: var(--piper-bg-hover); }
+    .piper .row-num, .piper .row-group { color: var(--piper-meta); }
+    .piper .row-song { color: var(--piper-text); }
+
+    .both { background: var(--both-bg); }
+    .both:hover { background: var(--both-bg-hover); }
+    .both .row-num, .both .row-group { color: var(--both-meta); }
+    .both .row-song { color: var(--both-text); }
+
+    .finale { background: var(--finale-bg); }
+    .finale:hover { background: var(--finale-bg-hover); }
+    .finale .row-num, .finale .row-group { color: var(--finale-meta); }
+    .finale .row-song { color: var(--finale-text); font-weight: 500; }
+
+    .tag {
+      display: inline-flex;
+      align-items: center;
+      font-size: 10px;
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      letter-spacing: 0.06em;
+      font-weight: 500;
+      padding: 2px 6px;
+      border-radius: 4px;
+      margin-left: 5px;
+      vertical-align: middle;
+      text-transform: uppercase;
+    }
+
+    .tag-sara  { background: var(--sara-tag-bg);  color: var(--sara-tag-text); }
+    .tag-piper { background: var(--piper-tag-bg); color: var(--piper-tag-text); }
+
+    @media (max-width: 480px) {
+      .row { grid-template-columns: 28px 1fr; }
+      .row-group { display: none; }
+      .title-main { font-size: 22px; }
+      .legend { gap: 10px; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="toggle-bar">
+    <button class="toggle-btn" onclick="toggleTheme()" id="toggle-btn" aria-label="Toggle dark mode">
+      <span class="toggle-icon" id="toggle-icon">☀️</span>
+      <span id="toggle-label">Switch to light mode</span>
+    </button>
+  </div>
+
+  <div class="program">
+
+    <div class="header">
+      <p class="title-sub">Spring Recital 2026</p>
+      <h1 class="title-main">&ldquo;Career Day&rdquo;</h1>
+      <p class="title-year">Full Dance Order &mdash; Family Program</p>
+    </div>
+
+    <div class="legend">
+      <div class="legend-item"><div class="legend-dot" style="background:#F0997B;"></div>Sara Benson</div>
+      <div class="legend-item"><div class="legend-dot" style="background:#AFA9EC;"></div>Piper Peterson</div>
+      <div class="legend-item"><div class="legend-dot" style="background:#5DCAA5;"></div>Both on stage</div>
+      <div class="legend-item"><div class="legend-dot" style="background:#EF9F27;"></div>All dancers</div>
+    </div>
+
+    <div class="act-header">Act 1</div>
+
+    <div class="row sara">
+      <span class="row-num">1</span>
+      <span class="row-song">&ldquo;Work Hard, Play Hard&rdquo; <span class="tag tag-sara">Sara</span></span>
+      <span class="row-group">Homemakers</span>
+    </div>
+    <div class="row"><span class="row-num">2</span><span class="row-song">&ldquo;Sleeping Beauty&rdquo;</span><span class="row-group">Adv. Ballet</span></div>
+    <div class="row"><span class="row-num">3</span><span class="row-song">&ldquo;Will The Sun Ever Shine Again&rdquo;</span><span class="row-group">3&ndash;5 ballet</span></div>
+    <div class="row"><span class="row-num">4</span><span class="row-song">&ldquo;Route 66&rdquo;</span><span class="row-group">6&ndash;8 jazz</span></div>
+    <div class="row"><span class="row-num">5</span><span class="row-song">&ldquo;Mr. Pinstriped Suit&rdquo;</span><span class="row-group">9&ndash;10 tap</span></div>
+    <div class="row"><span class="row-num">6</span><span class="row-song">&ldquo;Doechii&rdquo;</span><span class="row-group">Sr. Hip Hop</span></div>
+    <div class="row piper">
+      <span class="row-num">7</span>
+      <span class="row-song">&ldquo;Supermodel&rdquo; <span class="tag tag-piper">Piper</span></span>
+      <span class="row-group">Fashion Models</span>
+    </div>
+    <div class="row"><span class="row-num">8</span><span class="row-song">&ldquo;Minnie&rsquo;s Boutique&rdquo;</span><span class="row-group">Mommy &amp; Me</span></div>
+    <div class="row"><span class="row-num">9</span><span class="row-song">&ldquo;Short Skirt, Long Jacket&rdquo;</span><span class="row-group">Gracie Smith</span></div>
+    <div class="row"><span class="row-num">10</span><span class="row-song">&ldquo;Sharp Dressed Man&rdquo;</span><span class="row-group">9&ndash;10 jazz</span></div>
+    <div class="row"><span class="row-num">11</span><span class="row-song">&ldquo;Sound of Da Police&rdquo;</span><span class="row-group">Jr. Hip Hop</span></div>
+    <div class="row"><span class="row-num">12</span><span class="row-song">&ldquo;Jailbreak&rdquo;</span><span class="row-group">HS Tap</span></div>
+    <div class="row"><span class="row-num">13</span><span class="row-song">&ldquo;Perm&rdquo;</span><span class="row-group">Kaylea Burgess</span></div>
+    <div class="row piper">
+      <span class="row-num">14</span>
+      <span class="row-song">&ldquo;Glam&rdquo; <span class="tag tag-piper">Piper</span></span>
+      <span class="row-group">Fashion Models</span>
+    </div>
+    <div class="row"><span class="row-num">15</span><span class="row-song">&ldquo;When I Grow Up&rdquo;</span><span class="row-group">Pet. Hip Hop</span></div>
+    <div class="row"><span class="row-num">16</span><span class="row-song">&ldquo;Fallin&rsquo;&rdquo;</span><span class="row-group">Nicole Poterbin</span></div>
+    <div class="row"><span class="row-num">17</span><span class="row-song">&ldquo;Yikes&rdquo;</span><span class="row-group">Mariska Rader</span></div>
+
+    <div class="intermission">&mdash; 10 Minute Intermission &mdash;</div>
+    <div class="act-header">Act 2</div>
+
+    <div class="row both">
+      <span class="row-num">18</span>
+      <span class="row-song">&ldquo;Giddy Up&rdquo; <span class="tag tag-sara">Sara</span><span class="tag tag-piper">Piper</span></span>
+      <span class="row-group">Production</span>
+    </div>
+    <div class="row"><span class="row-num">19</span><span class="row-song">&ldquo;Little Patch of Heaven&rdquo;</span><span class="row-group">3&ndash;5 tap</span></div>
+    <div class="row"><span class="row-num">20</span><span class="row-song">&ldquo;Yodel-Adle-Eedle-Idle-Oo&rdquo;</span><span class="row-group">Jr. MT jazz</span></div>
+    <div class="row"><span class="row-num">21</span><span class="row-song">&ldquo;Opening Up&rdquo;</span><span class="row-group">Sr. MT tap</span></div>
+    <div class="row"><span class="row-num">22</span><span class="row-song">&ldquo;Jennie&rdquo;</span><span class="row-group">Nicole &amp; Mariska</span></div>
+    <div class="row"><span class="row-num">23</span><span class="row-song">&ldquo;Love You Left Behind&rdquo;</span><span class="row-group">Mara Hilliard</span></div>
+    <div class="row"><span class="row-num">24</span><span class="row-song">&ldquo;Fashion&rdquo;</span><span class="row-group">Hannah &amp; Gracie</span></div>
+    <div class="row piper">
+      <span class="row-num">25</span>
+      <span class="row-song">&ldquo;Madness&rdquo; <span class="tag tag-piper">Piper</span></span>
+      <span class="row-group">Fashion Models</span>
+    </div>
+    <div class="row sara">
+      <span class="row-num">26</span>
+      <span class="row-song">&ldquo;Beetlejuice&rdquo; <span class="tag tag-sara">Sara</span></span>
+      <span class="row-group">Kelli, Sara &amp; Autumn</span>
+    </div>
+    <div class="row"><span class="row-num">27</span><span class="row-song">&ldquo;Abracadabra&rdquo;</span><span class="row-group">HS jazz</span></div>
+    <div class="row"><span class="row-num">28</span><span class="row-song">&ldquo;Walk Like A Dinosaur&rdquo;</span><span class="row-group">Tumbling</span></div>
+    <div class="row"><span class="row-num">29</span><span class="row-song">&ldquo;Center Stage Diner&rdquo;</span><span class="row-group">Int. Hip Hop</span></div>
+    <div class="row"><span class="row-num">30</span><span class="row-song">&ldquo;Money&rdquo;</span><span class="row-group">Sr. MT jazz</span></div>
+
+    <div class="intermission">&mdash; 10 Minute Intermission &mdash;</div>
+    <div class="act-header">Act 3</div>
+
+    <div class="row both">
+      <span class="row-num">31</span>
+      <span class="row-song">RIOT RIOT <span class="tag tag-sara">Sara</span><span class="tag tag-piper">Piper</span></span>
+      <span class="row-group">RIOT</span>
+    </div>
+    <div class="row"><span class="row-num">32</span><span class="row-song">&ldquo;Light&rdquo;</span><span class="row-group">Addison &amp; Hannah</span></div>
+    <div class="row"><span class="row-num">33</span><span class="row-song">&ldquo;A Million Dreams&rdquo;</span><span class="row-group">Classical Ballet</span></div>
+    <div class="row"><span class="row-num">34</span><span class="row-song">&ldquo;2 StepN&rdquo;</span><span class="row-group">Jr. MT tap</span></div>
+    <div class="row"><span class="row-num">35</span><span class="row-song">&ldquo;Defying Gravity&rdquo;</span><span class="row-group">Madilynn McElroy</span></div>
+    <div class="row"><span class="row-num">36</span><span class="row-song">&ldquo;Lovesick&rdquo;</span><span class="row-group">Hannah Watkins</span></div>
+    <div class="row"><span class="row-num">37</span><span class="row-song">&ldquo;Bring &lsquo;Em Out&rdquo;</span><span class="row-group">Kaylea Burgess</span></div>
+    <div class="row"><span class="row-num">38</span><span class="row-song">&ldquo;To Build A Home&rdquo;</span><span class="row-group">9&ndash;10 lyrical</span></div>
+    <div class="row"><span class="row-num">39</span><span class="row-song">&ldquo;Imagine&rdquo;</span><span class="row-group">6&ndash;8 lyrical</span></div>
+    <div class="row"><span class="row-num">40</span><span class="row-song">&ldquo;Hometown Glory&rdquo;</span><span class="row-group">HS contemporary</span></div>
+    <div class="row"><span class="row-num">41</span><span class="row-song">&ldquo;Fatherman&rdquo;</span><span class="row-group">Young Adults</span></div>
+    <div class="row finale">
+      <span class="row-num">42</span>
+      <span class="row-song">FINALE <span class="tag tag-sara">Sara</span><span class="tag tag-piper">Piper</span></span>
+      <span class="row-group">All Dancers</span>
+    </div>
+
+  </div>
+
+  <script>
+    var html = document.documentElement;
+    var icon = document.getElementById('toggle-icon');
+    var label = document.getElementById('toggle-label');
+    var saved = localStorage.getItem('recital-theme');
+    if (saved) { html.setAttribute('data-theme', saved); }
+    updateButton();
+    function toggleTheme() {
+      var next = html.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+      html.setAttribute('data-theme', next);
+      localStorage.setItem('recital-theme', next);
+      updateButton();
+    }
+    function updateButton() {
+      var dark = html.getAttribute('data-theme') === 'dark';
+      icon.textContent = dark ? '☀️' : '🌙';
+      label.textContent = dark ? 'Switch to light mode' : 'Switch to dark mode';
+    }
+  </script>
+
+</body>
+</html>
