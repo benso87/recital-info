@@ -685,8 +685,10 @@
       html += '<div class="row' + (hlClass ? ' ' + hlClass : '') + '" data-num="' + n.num + '">';
       html += '<span class="row-num">' + n.num + '</span>';
       var tags = '';
-      if (selected.length > 0 && !n.finale) {
-        var matchingSelected = selected.filter(function(s) { return n.dancers.indexOf(s) !== -1; });
+      if (selected.length > 0) {
+        var matchingSelected = n.finale
+          ? finaleSelected()
+          : selected.filter(function(s) { return n.dancers.indexOf(s) !== -1; });
         var isDark = document.documentElement.getAttribute('data-theme') === 'dark';
         matchingSelected.forEach(function(name) {
           var idx = getColorIndex(name);
@@ -705,9 +707,30 @@
     container.innerHTML = html;
   }
 
+  function isRiotOnly(name) {
+    var inRiot = false;
+    for (var i = 0; i < NUMBERS.length; i++) {
+      var entry = NUMBERS[i];
+      if (entry.finale) continue;
+      if (entry.dancers.indexOf(name) === -1) continue;
+      if (entry.num === 31) { inRiot = true; continue; }
+      return false; // appears in a number other than RIOT
+    }
+    return inRiot;
+  }
+
+  function finaleSelected() {
+    return selected.filter(function(s) { return !isRiotOnly(s); });
+  }
+
   function getRowHighlight(n) {
     if (selected.length === 0) return '';
-    if (n.finale) return selected.length > 0 ? 'hl-multi' : '';
+    if (n.finale) {
+      var fs = finaleSelected();
+      if (fs.length === 0) return '';
+      if (fs.length === 1) return 'hl-' + getColorIndex(fs[0]);
+      return 'hl-multi';
+    }
 
     var matchingSelected = selected.filter(function(s) {
       return n.dancers.indexOf(s) !== -1;
