@@ -4,6 +4,9 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Career Day — Spring Recital 2026</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap" rel="stylesheet">
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
@@ -18,32 +21,15 @@
       --text-secondary:#888780;
       --text-muted:    #b4b2a9;
 
-      --sara-bg:       #FAECE7;
-      --sara-bg-hover: #F5C4B3;
-      --sara-text:     #712B13;
-      --sara-meta:     #993C1D;
-      --sara-tag-bg:   #F5C4B3;
-      --sara-tag-text: #993C1D;
-
-      --piper-bg:       #EEEDFE;
-      --piper-bg-hover: #CECBF6;
-      --piper-text:     #3C3489;
-      --piper-meta:     #534AB7;
-      --piper-tag-bg:   #CECBF6;
-      --piper-tag-text: #534AB7;
-
       --multi-bg:       #E1F5EE;
       --multi-bg-hover: #9FE1CB;
       --multi-text:     #085041;
       --multi-meta:     #0F6E56;
 
-      --ella-tag-bg:   #F7CEED;
-      --ella-tag-text: #8B1A6B;
-
-      --finale-bg:       #FAEEDA;
-      --finale-bg-hover: #FAC775;
-      --finale-text:     #633806;
-      --finale-meta:     #854F0B;
+      --finale-bg:       #E1F5EE;
+      --finale-bg-hover: #9FE1CB;
+      --finale-text:     #085041;
+      --finale-meta:     #0F6E56;
 
       --toggle-bg:     #1a1a18;
       --toggle-text:   #f5f0eb;
@@ -60,39 +46,22 @@
       --text-secondary:#888780;
       --text-muted:    #5f5e5a;
 
-      --sara-bg:       #3d1a0e;
-      --sara-bg-hover: #5a2513;
-      --sara-text:     #F5C4B3;
-      --sara-meta:     #F0997B;
-      --sara-tag-bg:   #5a2513;
-      --sara-tag-text: #F5C4B3;
-
-      --piper-bg:       #1e1b40;
-      --piper-bg-hover: #2d2860;
-      --piper-text:     #CECBF6;
-      --piper-meta:     #AFA9EC;
-      --piper-tag-bg:   #2d2860;
-      --piper-tag-text: #CECBF6;
-
       --multi-bg:       #072e22;
       --multi-bg-hover: #0a4232;
       --multi-text:     #9FE1CB;
       --multi-meta:     #5DCAA5;
 
-      --finale-bg:       #2e1f05;
-      --finale-bg-hover: #452f08;
-      --finale-text:     #FAC775;
-      --finale-meta:     #EF9F27;
-
-      --ella-tag-bg:   #4a1038;
-      --ella-tag-text: #F7CEED;
+      --finale-bg:       #072e22;
+      --finale-bg-hover: #0a4232;
+      --finale-text:     #9FE1CB;
+      --finale-meta:     #5DCAA5;
 
       --toggle-bg:     #f0ede8;
       --toggle-text:   #1a1a18;
     }
 
     body {
-      font-family: Georgia, 'Times New Roman', serif;
+      font-family: 'Roboto', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
       background: var(--bg-page);
       color: var(--text-primary);
       min-height: 100vh;
@@ -112,7 +81,7 @@
       color: var(--toggle-text);
       border: none;
       border-radius: 10px;
-      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      font-family: 'Roboto', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
       font-size: 16px;
       font-weight: 500;
       cursor: pointer;
@@ -128,6 +97,134 @@
     .toggle-btn:active { opacity: 0.75; }
     .toggle-icon { font-size: 20px; line-height: 1; }
 
+    /* ── Selector widget ── */
+    .selector-bar {
+      max-width: 680px;
+      margin: 0 auto 1rem;
+      position: relative;
+    }
+
+    .selector-field {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 6px;
+      min-height: 48px;
+      padding: 8px 12px;
+      background: var(--bg-card);
+      border: 1.5px solid var(--border-main);
+      border-radius: 10px;
+      cursor: text;
+      transition: border-color 0.15s, background 0.25s;
+    }
+
+    .selector-field:focus-within {
+      border-color: var(--text-secondary);
+    }
+
+    .selector-input {
+      flex: 1;
+      min-width: 140px;
+      border: none;
+      outline: none;
+      background: transparent;
+      font-family: 'Roboto', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      font-size: 15px;
+      color: var(--text-primary);
+      padding: 2px 0;
+    }
+
+    .selector-input::placeholder { color: var(--text-muted); }
+
+    .chip {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      padding: 3px 8px 3px 10px;
+      border-radius: 20px;
+      font-family: 'Roboto', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      font-size: 13px;
+      font-weight: 500;
+      white-space: nowrap;
+      background: var(--chip-bg, #ddd);
+      color: var(--chip-text, #333);
+      line-height: 1.4;
+    }
+
+    .chip-x {
+      cursor: pointer;
+      font-size: 15px;
+      line-height: 1;
+      opacity: 0.65;
+      padding: 0 1px;
+      background: none;
+      border: none;
+      color: inherit;
+      font-family: inherit;
+    }
+
+    .chip-x:hover { opacity: 1; }
+
+    .selector-dropdown {
+      position: absolute;
+      top: calc(100% + 4px);
+      left: 0;
+      right: 0;
+      background: var(--bg-card);
+      border: 1.5px solid var(--border-main);
+      border-radius: 10px;
+      max-height: 240px;
+      overflow-y: auto;
+      z-index: 100;
+      box-shadow: 0 4px 16px rgba(0,0,0,0.12);
+      display: none;
+    }
+
+    .selector-dropdown.open { display: block; }
+
+    .dd-item {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 9px 14px;
+      font-family: 'Roboto', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      font-size: 14px;
+      cursor: pointer;
+      color: var(--text-primary);
+      transition: background 0.1s;
+    }
+
+    .dd-item:hover, .dd-item.focused { background: var(--bg-hover); }
+
+    .dd-item.selected { font-weight: 500; }
+
+    .dd-check {
+      width: 16px;
+      height: 16px;
+      border-radius: 4px;
+      border: 1.5px solid var(--border-main);
+      flex-shrink: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 11px;
+    }
+
+    .dd-item.selected .dd-check {
+      background: var(--chip-bg, #ddd);
+      border-color: transparent;
+      color: var(--chip-text, #333);
+    }
+
+    .dd-empty {
+      padding: 12px 14px;
+      font-family: 'Roboto', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      font-size: 13px;
+      color: var(--text-muted);
+      font-style: italic;
+    }
+
+    /* ── Program ── */
     .program {
       max-width: 680px;
       margin: 0 auto;
@@ -151,7 +248,7 @@
       text-transform: uppercase;
       color: var(--text-secondary);
       margin: 0 0 0.4rem;
-      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      font-family: 'Roboto', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
     }
 
     .title-main {
@@ -164,7 +261,7 @@
     .title-year {
       font-size: 13px;
       color: var(--text-secondary);
-      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      font-family: 'Roboto', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
     }
 
     .legend {
@@ -178,19 +275,21 @@
       border-radius: 8px;
     }
 
+    .legend:empty { display: none; }
+
     .legend-item {
       display: flex;
       align-items: center;
       gap: 6px;
       font-size: 12px;
-      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      font-family: 'Roboto', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
       color: var(--text-primary);
     }
 
     .legend-dot { width: 12px; height: 12px; border-radius: 3px; flex-shrink: 0; }
 
     .act-header {
-      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      font-family: 'Roboto', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
       font-size: 11px;
       letter-spacing: 0.15em;
       text-transform: uppercase;
@@ -204,7 +303,7 @@
     .intermission {
       text-align: center;
       font-size: 11px;
-      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      font-family: 'Roboto', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
       letter-spacing: 0.12em;
       text-transform: uppercase;
       color: var(--text-muted);
@@ -229,7 +328,7 @@
 
     .row-num {
       font-size: 12px;
-      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      font-family: 'Roboto', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
       color: var(--text-muted);
       text-align: right;
     }
@@ -238,37 +337,144 @@
 
     .row-group {
       font-size: 12px;
-      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      font-family: 'Roboto', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
       color: var(--text-secondary);
       text-align: right;
       white-space: nowrap;
     }
 
-    .sara { background: var(--sara-bg); }
-    .sara:hover { background: var(--sara-bg-hover); }
-    .sara .row-num, .sara .row-group { color: var(--sara-meta); }
-    .sara .row-song { color: var(--sara-text); }
+    /* Highlighted rows — color vars injected per-slot by JS */
+    .hl-multi { background: var(--multi-bg) !important; }
+    .hl-multi:hover { background: var(--multi-bg-hover) !important; }
+    .hl-multi .row-num, .hl-multi .row-group { color: var(--multi-meta); }
+    .hl-multi .row-song { color: var(--multi-text); font-weight: 500; }
 
-    .piper { background: var(--piper-bg); }
-    .piper:hover { background: var(--piper-bg-hover); }
-    .piper .row-num, .piper .row-group { color: var(--piper-meta); }
-    .piper .row-song { color: var(--piper-text); }
+    .hl-1 { background: var(--hl1-bg); }
+    .hl-1:hover { background: var(--hl1-bg-hover); }
+    .hl-1 .row-num, .hl-1 .row-group { color: var(--hl1-meta); }
+    .hl-1 .row-song { color: var(--hl1-text); }
 
-    .multi { background: var(--multi-bg); }
-    .multi:hover { background: var(--multi-bg-hover); }
-    .multi .row-num, .multi .row-group { color: var(--multi-meta); }
-    .multi .row-song { color: var(--multi-text); }
+    .hl-2 { background: var(--hl2-bg); }
+    .hl-2:hover { background: var(--hl2-bg-hover); }
+    .hl-2 .row-num, .hl-2 .row-group { color: var(--hl2-meta); }
+    .hl-2 .row-song { color: var(--hl2-text); }
 
-    .finale { background: var(--finale-bg); }
-    .finale:hover { background: var(--finale-bg-hover); }
-    .finale .row-num, .finale .row-group { color: var(--finale-meta); }
-    .finale .row-song { color: var(--finale-text); font-weight: 500; }
+    .hl-3 { background: var(--hl3-bg); }
+    .hl-3:hover { background: var(--hl3-bg-hover); }
+    .hl-3 .row-num, .hl-3 .row-group { color: var(--hl3-meta); }
+    .hl-3 .row-song { color: var(--hl3-text); }
+
+    .hl-4 { background: var(--hl4-bg); }
+    .hl-4:hover { background: var(--hl4-bg-hover); }
+    .hl-4 .row-num, .hl-4 .row-group { color: var(--hl4-meta); }
+    .hl-4 .row-song { color: var(--hl4-text); }
+
+    .hl-5 { background: var(--hl5-bg); }
+    .hl-5:hover { background: var(--hl5-bg-hover); }
+    .hl-5 .row-num, .hl-5 .row-group { color: var(--hl5-meta); }
+    .hl-5 .row-song { color: var(--hl5-text); }
+
+    .hl-6 { background: var(--hl6-bg); }
+    .hl-6:hover { background: var(--hl6-bg-hover); }
+    .hl-6 .row-num, .hl-6 .row-group { color: var(--hl6-meta); }
+    .hl-6 .row-song { color: var(--hl6-text); }
+
+    .hl-7 { background: var(--hl7-bg); }
+    .hl-7:hover { background: var(--hl7-bg-hover); }
+    .hl-7 .row-num, .hl-7 .row-group { color: var(--hl7-meta); }
+    .hl-7 .row-song { color: var(--hl7-text); }
+
+    .hl-8 { background: var(--hl8-bg); }
+    .hl-8:hover { background: var(--hl8-bg-hover); }
+    .hl-8 .row-num, .hl-8 .row-group { color: var(--hl8-meta); }
+    .hl-8 .row-song { color: var(--hl8-text); }
+
+    .sel-row {
+      display: flex;
+      gap: 8px;
+      align-items: flex-start;
+    }
+
+    .sel-row .selector-field { flex: 1; }
+
+    .clear-btn {
+      flex-shrink: 0;
+      padding: 0 16px;
+      height: 48px;
+      background: var(--bg-card);
+      color: var(--text-secondary);
+      border: 1.5px solid var(--border-main);
+      border-radius: 10px;
+      font-family: 'Roboto', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      font-size: 14px;
+      font-weight: 500;
+      cursor: pointer;
+      white-space: nowrap;
+      transition: background 0.15s, color 0.15s, border-color 0.15s;
+      display: none;
+    }
+
+    .clear-btn.visible { display: flex; align-items: center; }
+    .clear-btn:hover { background: var(--bg-hover); color: var(--text-primary); border-color: var(--text-secondary); }
+
+    .modal-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.45);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 200;
+      display: none;
+    }
+
+    .modal-overlay.open { display: flex; }
+
+    .modal-box {
+      background: var(--bg-card);
+      border: 1px solid var(--border-main);
+      border-radius: 14px;
+      padding: 1.5rem 1.75rem;
+      max-width: 340px;
+      width: calc(100% - 2rem);
+      font-family: 'Roboto', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      box-shadow: 0 8px 32px rgba(0,0,0,0.2);
+    }
+
+    .modal-msg {
+      font-size: 15px;
+      color: var(--text-primary);
+      margin-bottom: 1.25rem;
+      line-height: 1.5;
+    }
+
+    .modal-btns {
+      display: flex;
+      gap: 10px;
+      justify-content: flex-end;
+    }
+
+    .modal-btn {
+      padding: 0.5rem 1.25rem;
+      border-radius: 8px;
+      border: 1.5px solid var(--border-main);
+      font-family: 'Roboto', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      font-size: 14px;
+      font-weight: 500;
+      cursor: pointer;
+      transition: background 0.15s;
+    }
+
+    .modal-btn-no  { background: var(--bg-subtle); color: var(--text-primary); }
+    .modal-btn-no:hover  { background: var(--bg-hover); }
+    .modal-btn-yes { background: var(--text-primary); color: var(--bg-page); border-color: transparent; }
+    .modal-btn-yes:hover { opacity: 0.85; }
 
     .tag {
       display: inline-flex;
       align-items: center;
       font-size: 10px;
-      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      font-family: 'Roboto', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
       letter-spacing: 0.06em;
       font-weight: 500;
       padding: 2px 6px;
@@ -277,10 +483,6 @@
       vertical-align: middle;
       text-transform: uppercase;
     }
-
-    .tag-sara  { background: var(--sara-tag-bg);  color: var(--sara-tag-text); }
-    .tag-piper { background: var(--piper-tag-bg); color: var(--piper-tag-text); }
-    .tag-ella  { background: var(--ella-tag-bg);  color: var(--ella-tag-text); }
 
     @media (max-width: 480px) {
       .row { grid-template-columns: 28px 1fr; }
@@ -299,127 +501,492 @@
     </button>
   </div>
 
-  <div class="program">
+  <div class="selector-bar" id="selector-bar"></div>
 
+  <div class="modal-overlay" id="clear-modal">
+    <div class="modal-box">
+      <p class="modal-msg">Are you sure you want to empty the dancer list?</p>
+      <div class="modal-btns">
+        <button class="modal-btn modal-btn-no"  onclick="closeClearModal()">No</button>
+        <button class="modal-btn modal-btn-yes" onclick="confirmClear()">Yes</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="program">
     <div class="header">
       <p class="title-sub">Spring Recital 2026</p>
       <h1 class="title-main">&ldquo;Career Day&rdquo;</h1>
       <p class="title-year">June 6, 2026 &mdash; 6:00 pm</p>
     </div>
-
-    <div class="legend">
-      <div class="legend-item"><div class="legend-dot" style="background:#F0997B;"></div>Sara</div>
-      <div class="legend-item"><div class="legend-dot" style="background:#AFA9EC;"></div>Piper</div>
-      <div class="legend-item"><div class="legend-dot" style="background:#C94EA0;"></div>Ella</div>
-      <div class="legend-item"><div class="legend-dot" style="background:#5DCAA5;"></div>Multi</div>
-      <div class="legend-item"><div class="legend-dot" style="background:#EF9F27;"></div>All dancers</div>
-    </div>
-
-    <div class="act-header">Act 1</div>
-
-    <div class="row sara">
-      <span class="row-num">1</span>
-      <span class="row-song">&ldquo;Work Hard, Play Hard&rdquo; <span class="tag tag-sara">Sara</span></span>
-      <span class="row-group">Homemakers</span>
-    </div>
-    <div class="row"><span class="row-num">2</span><span class="row-song">&ldquo;Sleeping Beauty&rdquo;</span><span class="row-group">Adv. Ballet</span></div>
-    <div class="row"><span class="row-num">3</span><span class="row-song">&ldquo;Will The Sun Ever Shine Again&rdquo;</span><span class="row-group">3&ndash;5 ballet</span></div>
-    <div class="row"><span class="row-num">4</span><span class="row-song">&ldquo;Route 66&rdquo;</span><span class="row-group">6&ndash;8 jazz</span></div>
-    <div class="row"><span class="row-num">5</span><span class="row-song">&ldquo;Mr. Pinstriped Suit&rdquo;</span><span class="row-group">9&ndash;10 tap</span></div>
-    <div class="row"><span class="row-num">6</span><span class="row-song">&ldquo;Doechii&rdquo;</span><span class="row-group">Sr. Hip Hop</span></div>
-    <div class="row piper">
-      <span class="row-num">7</span>
-      <span class="row-song">&ldquo;Supermodel&rdquo; <span class="tag tag-piper">Piper</span></span>
-      <span class="row-group">Fashion Models</span>
-    </div>
-    <div class="row"><span class="row-num">8</span><span class="row-song">&ldquo;Minnie&rsquo;s Boutique&rdquo;</span><span class="row-group">Mommy &amp; Me</span></div>
-    <div class="row"><span class="row-num">9</span><span class="row-song">&ldquo;Short Skirt, Long Jacket&rdquo;</span><span class="row-group">Gracie Smith</span></div>
-    <div class="row"><span class="row-num">10</span><span class="row-song">&ldquo;Sharp Dressed Man&rdquo;</span><span class="row-group">9&ndash;10 jazz</span></div>
-    <div class="row"><span class="row-num">11</span><span class="row-song">&ldquo;Sound of Da Police&rdquo;</span><span class="row-group">Jr. Hip Hop</span></div>
-    <div class="row"><span class="row-num">12</span><span class="row-song">&ldquo;Jailbreak&rdquo;</span><span class="row-group">HS Tap</span></div>
-    <div class="row"><span class="row-num">13</span><span class="row-song">&ldquo;Perm&rdquo;</span><span class="row-group">Kaylea Burgess</span></div>
-    <div class="row piper">
-      <span class="row-num">14</span>
-      <span class="row-song">&ldquo;Glam&rdquo; <span class="tag tag-piper">Piper</span></span>
-      <span class="row-group">Fashion Models</span>
-    </div>
-    <div class="row"><span class="row-num">15</span><span class="row-song">&ldquo;When I Grow Up&rdquo;</span><span class="row-group">Pet. Hip Hop</span></div>
-    <div class="row"><span class="row-num">16</span><span class="row-song">&ldquo;Fallin&rsquo;&rdquo;</span><span class="row-group">Nicole Poterbin</span></div>
-    <div class="row"><span class="row-num">17</span><span class="row-song">&ldquo;Yikes&rdquo;</span><span class="row-group">Mariska Rader</span></div>
-
-    <div class="intermission">&mdash; 10 Minute Intermission &mdash;</div>
-    <div class="act-header">Act 2</div>
-
-    <div class="row multi">
-      <span class="row-num">18</span>
-      <span class="row-song">&ldquo;Giddy Up&rdquo; <span class="tag tag-sara">Sara</span><span class="tag tag-piper">Piper</span></span>
-      <span class="row-group">Production</span>
-    </div>
-    <div class="row"><span class="row-num">19</span><span class="row-song">&ldquo;Little Patch of Heaven&rdquo;</span><span class="row-group">3&ndash;5 tap</span></div>
-    <div class="row"><span class="row-num">20</span><span class="row-song">&ldquo;Yodel-Adle-Eedle-Idle-Oo&rdquo;</span><span class="row-group">Jr. MT jazz</span></div>
-    <div class="row"><span class="row-num">21</span><span class="row-song">&ldquo;Opening Up&rdquo;</span><span class="row-group">Sr. MT tap</span></div>
-    <div class="row"><span class="row-num">22</span><span class="row-song">&ldquo;Jennie&rdquo;</span><span class="row-group">Nicole &amp; Mariska</span></div>
-    <div class="row"><span class="row-num">23</span><span class="row-song">&ldquo;Love You Left Behind&rdquo;</span><span class="row-group">Mara Hilliard</span></div>
-    <div class="row"><span class="row-num">24</span><span class="row-song">&ldquo;Fashion&rdquo;</span><span class="row-group">Hannah &amp; Gracie</span></div>
-    <div class="row piper">
-      <span class="row-num">25</span>
-      <span class="row-song">&ldquo;Madness&rdquo; <span class="tag tag-piper">Piper</span></span>
-      <span class="row-group">Fashion Models</span>
-    </div>
-    <div class="row sara">
-      <span class="row-num">26</span>
-      <span class="row-song">&ldquo;Beetlejuice&rdquo; <span class="tag tag-sara">Sara</span></span>
-      <span class="row-group">Kelli, Sara &amp; Autumn</span>
-    </div>
-    <div class="row"><span class="row-num">27</span><span class="row-song">&ldquo;Abracadabra&rdquo;</span><span class="row-group">HS jazz</span></div>
-    <div class="row"><span class="row-num">28</span><span class="row-song">&ldquo;Walk Like A Dinosaur&rdquo;</span><span class="row-group">Tumbling</span></div>
-    <div class="row"><span class="row-num">29</span><span class="row-song">&ldquo;Center Stage Diner&rdquo;</span><span class="row-group">Int. Hip Hop</span></div>
-    <div class="row"><span class="row-num">30</span><span class="row-song">&ldquo;Money&rdquo;</span><span class="row-group">Sr. MT jazz</span></div>
-
-    <div class="intermission">&mdash; 10 Minute Intermission &mdash;</div>
-    <div class="act-header">Act 3</div>
-
-    <div class="row multi">
-      <span class="row-num">31</span>
-      <span class="row-song">RIOT <span class="tag tag-sara">Sara</span><span class="tag tag-piper">Piper</span><span class="tag tag-ella">Ella</span></span>
-      <span class="row-group">RIOT</span>
-    </div>
-    <div class="row"><span class="row-num">32</span><span class="row-song">&ldquo;Light&rdquo;</span><span class="row-group">Addison &amp; Hannah</span></div>
-    <div class="row"><span class="row-num">33</span><span class="row-song">&ldquo;A Million Dreams&rdquo;</span><span class="row-group">Classical Ballet</span></div>
-    <div class="row"><span class="row-num">34</span><span class="row-song">&ldquo;2 StepN&rdquo;</span><span class="row-group">Jr. MT tap</span></div>
-    <div class="row"><span class="row-num">35</span><span class="row-song">&ldquo;Defying Gravity&rdquo;</span><span class="row-group">Madilynn McElroy</span></div>
-    <div class="row"><span class="row-num">36</span><span class="row-song">&ldquo;Lovesick&rdquo;</span><span class="row-group">Hannah Watkins</span></div>
-    <div class="row"><span class="row-num">37</span><span class="row-song">&ldquo;Bring &lsquo;Em Out&rdquo;</span><span class="row-group">Kaylea Burgess</span></div>
-    <div class="row"><span class="row-num">38</span><span class="row-song">&ldquo;To Build A Home&rdquo;</span><span class="row-group">9&ndash;10 lyrical</span></div>
-    <div class="row"><span class="row-num">39</span><span class="row-song">&ldquo;Imagine&rdquo;</span><span class="row-group">6&ndash;8 lyrical</span></div>
-    <div class="row"><span class="row-num">40</span><span class="row-song">&ldquo;Hometown Glory&rdquo;</span><span class="row-group">HS contemporary</span></div>
-    <div class="row"><span class="row-num">41</span><span class="row-song">&ldquo;Fatherman&rdquo;</span><span class="row-group">Young Adults</span></div>
-    <div class="row finale">
-      <span class="row-num">42</span>
-      <span class="row-song">FINALE <span class="tag tag-sara">Sara</span><span class="tag tag-piper">Piper</span></span>
-      <span class="row-group">All Dancers</span>
-    </div>
-
+    <div class="legend" id="legend"></div>
+    <div id="program-rows"></div>
   </div>
 
   <script>
-    var html = document.documentElement;
-    var icon = document.getElementById('toggle-icon');
-    var label = document.getElementById('toggle-label');
-    var saved = localStorage.getItem('recital-theme');
-    if (saved) { html.setAttribute('data-theme', saved); }
+  // ── Data ──────────────────────────────────────────────────────────────────
+
+  var GROUPS = {
+    "Homemakers": ["Autumn Foster","Belinda Presley","Crystal Spink","Danielle McCrickard","Grammy Trish","Julie Spink","Kari Burgess","Kelli Hibler","Melinda Carpenter","Sabrina Beyea","Sara Benson","Terri Kirksey","Tracy Miles","Whitley Griffith"],
+    "Royalty": ["Addison Thomsen","Addison Watkins","Charlize Soto","Dallas Foster","Emmaline Manis","Gracie Smith","Hannah Cain","Hannah Watkins","Joanna Wagner","Kinadie Reed","Millie Jump","Samantha Jones","Sophia Mitchell-Akin"],
+    "Little Farmers": ["Ada Fore","Avery Twenter","Cordelia Hawthorne-Lambert","Finley McCrickard","Hayven Stockton","Hope Pipenhagen"],
+    "RACERS": ["Elise Maberry","Everlee Thompson","Finleigh Conrad","Grace Rader","Kylee Quarles","Leia Huie","Lydia Nimmo","Rori-Jean Allen","Scarlette Breeden","Tinsley Bauer"],
+    "All Business": ["Aleace Torres","Aurora Thomsen","Autumn Powell","Desirae Ridgway","Ellyana Holley","Haley Proffitt","Kadynce Reed","Karolina Presley","Katrina Presley","Maiden Painter","Maddie Webb","Rylan Reed","Scarlett Nimmo","Serenity Dickens"],
+    "Dog Catchers": ["Anna Bly","Ashlynne Kirksey","Charlize Soto","Gracie Johnson","Gracie Smith","Kara Gorman","Kaylea Burgess","Lillee Griffith","Mara Hilliard","Mariska Rader","Nicole Poterbin","Ruth Barnett"],
+    "Fashion Models": ["Amelia Grainger","Aurora Foster","Emerson Bridges","Julia Warwick","Kerrigan Presley","Madelyn Mitchell","Madilynn McElroy","Myka Wilkerson","Paislee Spink","Payton Watkins","Piper Peterson","Sophia Ridgway","Veronica Beyea"],
+    "Bow Makers": ["Edwin Davis","Indy Allen","Livvy Pipenhagen","Magnolia Lorscheider"],
+    "Cops & Robbers": ["Destiny Taylor","Jenna Ash","Malachi Foster","RaeLynne VanHolt"],
+    "Magicians": ["Addison Watkins","Alyssa Collamore","Ashlynne Kirksey","Gracie Johnson","Gracie Smith","Hannah Watkins","Kaylea Burgess","Mariska Rader","Nicole Poterbin"],
+    "Super Stars": ["Adalynne VanHolt","Brenley Carpenter","Brecklyn Stucke","Brooklynn Feely","Cope Rader","Corabella Glor","Emmarie Waldo","June Ohmes","Josie Ohmes","Mason Weeman","Ryley Bell"],
+    "Dreamers": ["Adalise Pierre","Briella Benedict","Elisha Greenwood","Ellie Pipenhagen","Ellyana Holley","Everleigh Pierre","Kylie Clinton","Maelie Maze","Maiden Painter","Mary McRee","Rory Beam","Yainelys Vega Chen"],
+    "Animal Wranglers": ["Brooklynn Feely","Emmarie Waldo","June Ohmes","Josie Ohmes","Kimber Smith","Scarlette Breeden"],
+    "Waitress": ["Addison Thomsen","Emmaline Manis","Gracie Smith","Hannah Watkins","Jacelynn McDougal","Lorelai Carr","Millie Jump","Naomi Elliott","Rachelle Gray","Samantha Jones"],
+    "Servers": ["Amelia Grainger","Aurora Latiker","Cataleya Glor","Desirae Ridgway","Grace Rader","Harlee Mott","Isaac Elliott","Maddie Webb","Myka Wilkerson","Payton Watkins","Riley Beyea","Scarlett Nimmo","Sophia Ridgway","Zoey Elliott"],
+    "Cattle Wranglers": ["Brooklynn Feely","Jenna Ash","Julia Warwick","Layla Nelson","Leia Huie","Paislee Spink","Raelynn Payne","Rowdy Simcox","Winona Jones"],
+    "Stock Brokers": ["Ashley Wilson","Brittany Russell","Lisa Weeman","Mikayla Becker","Nikki Davis"],
+    "Saloon Dancers": ["Ashlynne Kirksey","Aurora Foster","Autumn Foster","Brittany Russell","Crystal Spink","Desirae Ridgway","Finleigh Conrad","Gracie Johnson","Haven Francom","Jenna Ash","Julie Spink","Kari Burgess","Kaylea Burgess","Kelli Hibler","Kylie Clinton","Lisa Weeman","Lorelai Carr","Madelyn Mitchell","Madilynn McElroy","Mikayla Becker","Myka Wilkerson","Nicole Poterbin","Nikki Davis","Paislee Spink","Piper Peterson","RaeLynne VanHolt","Relm Francom","Riley Beyea","Riven Francom","Sabrina Beyea","Sara Benson","Sophia Ridgway","Terri Kirksey","Tracy Miles","Trish Thompson","Veronica Beyea"],
+    "RIOT": ["Grammy Trish","Terri Kirksey","Autumn Foster","Aurora Foster","Matthias Foster","Jenna Ash","Tracy Miles","Kerrigan Presley","Belinda Presley","Katrina Presley","Karolina Presley","Madelyn Mitchell","Madilynn McElroy","Audrey McElroy","Sabrina Beyea","Veronica Beyea","Riley Beyea","Charlize Soto","Abby Soto","Carmen Soto","Charlene Soto","Cerenity Soto","Julia Warwick","Christian Warwick","Sara Benson","Piper Peterson","Ella Peterson","Myka Wilkerson","Laura Carr","Lorelai Carr","Danielle McCrickard","Finley McCrickard","Amelia Grainger","Rachel Grainger","Aurora Latiker","Michael Latiker"]
+  };
+
+  var NUMBERS = [
+    {num:1,  song:"“Work Hard, Play Hard”", group:"Homemakers",          act:1, dancers:GROUPS["Homemakers"]},
+    {num:2,  song:"“Sleeping Beauty”",       group:"Adv. Ballet",         act:1, dancers:GROUPS["Royalty"]},
+    {num:3,  song:"“Will The Sun Ever Shine Again”", group:"3–5 ballet", act:1, dancers:GROUPS["Little Farmers"]},
+    {num:4,  song:"“Route 66”",              group:"6–8 jazz",        act:1, dancers:GROUPS["RACERS"]},
+    {num:5,  song:"“Mr. Pinstriped Suit”",   group:"9–10 tap",        act:1, dancers:GROUPS["All Business"]},
+    {num:6,  song:"“Doechii”",               group:"Sr. Hip Hop",         act:1, dancers:GROUPS["Dog Catchers"]},
+    {num:7,  song:"“Supermodel”",            group:"Fashion Models",      act:1, dancers:GROUPS["Fashion Models"]},
+    {num:8,  song:"“Minnie’s Boutique”",group:"Mommy & Me",     act:1, dancers:GROUPS["Bow Makers"]},
+    {num:9,  song:"“Short Skirt, Long Jacket”", group:"Gracie Smith",     act:1, dancers:["Gracie Smith"]},
+    {num:10, song:"“Sharp Dressed Man”",     group:"9–10 jazz",       act:1, dancers:GROUPS["All Business"]},
+    {num:11, song:"“Sound of Da Police”",    group:"Jr. Hip Hop",         act:1, dancers:GROUPS["Cops & Robbers"]},
+    {num:12, song:"“Jailbreak”",             group:"HS Tap",              act:1, dancers:GROUPS["Magicians"]},
+    {num:13, song:"“Perm”",                  group:"Kaylea Burgess",      act:1, dancers:["Kaylea Burgess"]},
+    {num:14, song:"“Glam”",                  group:"Fashion Models",      act:1, dancers:GROUPS["Fashion Models"]},
+    {num:15, song:"“When I Grow Up”",        group:"Pet. Hip Hop",        act:1, dancers:GROUPS["Super Stars"]},
+    {num:16, song:"“Fallin’”",          group:"Nicole Poterbin",     act:1, dancers:["Nicole Poterbin"]},
+    {num:17, song:"“Yikes”",                 group:"Mariska Rader",       act:1, dancers:["Mariska Rader"]},
+    {num:18, song:"“Giddy Up”",              group:"Production",          act:2, dancers:GROUPS["Saloon Dancers"]},
+    {num:19, song:"“Little Patch of Heaven”",group:"3–5 tap",        act:2, dancers:GROUPS["Little Farmers"]},
+    {num:20, song:"“Yodel-Adle-Eedle-Idle-Oo”", group:"Jr. MT jazz",     act:2, dancers:GROUPS["Cattle Wranglers"]},
+    {num:21, song:"“Opening Up”",            group:"Sr. MT tap",          act:2, dancers:GROUPS["Waitress"]},
+    {num:22, song:"“Jennie”",                group:"Nicole & Mariska",act:2, dancers:["Nicole Poterbin","Mariska Rader"]},
+    {num:23, song:"“Love You Left Behind”",  group:"Mara Hilliard",       act:2, dancers:["Mara Hilliard"]},
+    {num:24, song:"“Fashion”",               group:"Hannah & Gracie",act:2, dancers:["Hannah Watkins","Gracie Smith"]},
+    {num:25, song:"“Madness”",               group:"Fashion Models",      act:2, dancers:GROUPS["Fashion Models"]},
+    {num:26, song:"“Beetlejuice”",           group:"Kelli, Sara & Autumn", act:2, dancers:["Kelli Hibler","Sara Benson","Autumn Foster"]},
+    {num:27, song:"“Abracadabra”",           group:"HS jazz",             act:2, dancers:GROUPS["Magicians"]},
+    {num:28, song:"“Walk Like A Dinosaur”",  group:"Tumbling",            act:2, dancers:GROUPS["Animal Wranglers"]},
+    {num:29, song:"“Center Stage Diner”",    group:"Int. Hip Hop",        act:2, dancers:GROUPS["Servers"]},
+    {num:30, song:"“Money”",                 group:"Sr. MT jazz",         act:2, dancers:GROUPS["Waitress"]},
+    {num:31, song:"RIOT",                              group:"RIOT",                act:3, dancers:GROUPS["RIOT"]},
+    {num:32, song:"“Light”",                 group:"Addison & Hannah",act:3, dancers:["Addison Watkins","Hannah Watkins"]},
+    {num:33, song:"“A Million Dreams”",      group:"Classical Ballet",    act:3, dancers:GROUPS["Dreamers"]},
+    {num:34, song:"“2 StepN”",               group:"Jr. MT tap",          act:3, dancers:GROUPS["Cattle Wranglers"]},
+    {num:35, song:"“Defying Gravity”",       group:"Madilynn McElroy",    act:3, dancers:["Madilynn McElroy"]},
+    {num:36, song:"“Lovesick”",              group:"Hannah Watkins",      act:3, dancers:["Hannah Watkins"]},
+    {num:37, song:"“Bring ‘Em Out”",    group:"Kaylea Burgess",      act:3, dancers:["Kaylea Burgess"]},
+    {num:38, song:"“To Build A Home”",       group:"9–10 lyrical",   act:3, dancers:GROUPS["All Business"]},
+    {num:39, song:"“Imagine”",               group:"6–8 lyrical",    act:3, dancers:GROUPS["RACERS"]},
+    {num:40, song:"“Hometown Glory”",        group:"HS contemporary",     act:3, dancers:GROUPS["Magicians"]},
+    {num:41, song:"“Fatherman”",             group:"Young Adults",        act:3, dancers:GROUPS["Stock Brokers"]},
+    {num:42, song:"FINALE",                            group:"All Dancers",         act:3, finale:true, dancers:[]}
+  ];
+
+  // Build unique dancer list sorted by last name
+  var _seen = {};
+  var ALL_DANCERS = [];
+  NUMBERS.forEach(function(n) {
+    n.dancers.forEach(function(d) {
+      if (!_seen[d]) { _seen[d] = true; ALL_DANCERS.push(d); }
+    });
+  });
+  // Also pull all group members (some may not appear in NUMBERS directly)
+  Object.keys(GROUPS).forEach(function(g) {
+    GROUPS[g].forEach(function(d) {
+      if (!_seen[d]) { _seen[d] = true; ALL_DANCERS.push(d); }
+    });
+  });
+  ALL_DANCERS.sort(function(a, b) {
+    function lastName(n) {
+      var parts = n.trim().split(/\s+/);
+      return parts[parts.length - 1].toLowerCase();
+    }
+    var la = lastName(a), lb = lastName(b);
+    return la < lb ? -1 : la > lb ? 1 : 0;
+  });
+
+  // ── Color palette ─────────────────────────────────────────────────────────
+  var PALETTE = [
+    // [light-bg, light-bg-hover, light-text, light-meta, dark-bg, dark-bg-hover, dark-text, dark-meta, dot-color]
+    ["#FAECE7","#F5C4B3","#712B13","#993C1D", "#3d1a0e","#5a2513","#F5C4B3","#F0997B", "#F0997B"],
+    ["#EEEDFE","#CECBF6","#3C3489","#534AB7", "#1e1b40","#2d2860","#CECBF6","#AFA9EC", "#AFA9EC"],
+    ["#FEF3E2","#FAD897","#6B3A00","#8A5200", "#2e1f05","#452f08","#FAC775","#EF9F27", "#EF9F27"],
+    ["#FCE8F3","#F4BADE","#7B1553","#9E2068", "#3a0d28","#561240","#F7CEED","#EE8DD0", "#EE8DD0"],
+    ["#E8F4FD","#B3DCF5","#1a4f6e","#226690", "#0e2a3a","#163d52","#93D4F0","#5DBFE8", "#5DBFE8"],
+    ["#EDFAE1","#C5EFA4","#2d5a12","#3d7a18", "#162e08","#223f0c","#A8E97B","#87D44E", "#87D44E"],
+    ["#FDF0F0","#F5C0C0","#7a1c1c","#9e2424", "#3a0d0d","#521212","#F5AAAA","#EC7979", "#EC7979"],
+    ["#F0F0FF","#C8C8FF","#2a2a8a","#3838aa", "#0d0d3a","#141452","#ADADFF","#8080FF", "#8080FF"]
+  ];
+
+  // ── State ─────────────────────────────────────────────────────────────────
+  var selected = []; // array of dancer names in order selected
+  var colorMap = {}; // dancer name -> palette index (1-based)
+  var nextColor = 0;
+
+  function getColorIndex(name) {
+    if (!colorMap[name]) {
+      nextColor = (nextColor % PALETTE.length) + 1;
+      colorMap[name] = nextColor;
+    }
+    return colorMap[name];
+  }
+
+  // ── CSS variable injection ────────────────────────────────────────────────
+  var styleEl = document.createElement('style');
+  document.head.appendChild(styleEl);
+
+  function updateCSSVars() {
+    var isDark = document.documentElement.getAttribute('data-theme') === 'dark';
+    var lines = [':root {'];
+    for (var i = 1; i <= PALETTE.length; i++) {
+      var p = PALETTE[i - 1];
+      var bg      = isDark ? p[4] : p[0];
+      var bgHover = isDark ? p[5] : p[1];
+      var text    = isDark ? p[6] : p[2];
+      var meta    = isDark ? p[7] : p[3];
+      lines.push(
+        '--hl'+i+'-bg:'+bg+';',
+        '--hl'+i+'-bg-hover:'+bgHover+';',
+        '--hl'+i+'-text:'+text+';',
+        '--hl'+i+'-meta:'+meta+';'
+      );
+    }
+    lines.push('}');
+    styleEl.textContent = lines.join('\n');
+  }
+
+  // ── Row rendering ─────────────────────────────────────────────────────────
+  function renderRows() {
+    var container = document.getElementById('program-rows');
+    var html = '';
+    var currentAct = 0;
+
+    NUMBERS.forEach(function(n) {
+      if (n.act !== currentAct) {
+        if (currentAct > 0) {
+          html += '<div class="intermission">&mdash; 10 Minute Intermission &mdash;</div>';
+        }
+        html += '<div class="act-header">Act ' + n.act + '</div>';
+        currentAct = n.act;
+      }
+
+      var hlClass = getRowHighlight(n);
+      html += '<div class="row' + (hlClass ? ' ' + hlClass : '') + '" data-num="' + n.num + '">';
+      html += '<span class="row-num">' + n.num + '</span>';
+      var tags = '';
+      if (selected.length > 0 && !n.finale) {
+        var matchingSelected = selected.filter(function(s) { return n.dancers.indexOf(s) !== -1; });
+        var isDark = document.documentElement.getAttribute('data-theme') === 'dark';
+        matchingSelected.forEach(function(name) {
+          var idx = getColorIndex(name);
+          var p = PALETTE[idx - 1];
+          var tagBg   = isDark ? p[5] : p[1];
+          var tagText = isDark ? p[7] : p[3];
+          var firstName = name.split(' ')[0];
+          tags += '<span class="tag" style="background:' + tagBg + ';color:' + tagText + '">' + firstName + '</span>';
+        });
+      }
+      html += '<span class="row-song">' + n.song + tags + '</span>';
+      html += '<span class="row-group">' + n.group + '</span>';
+      html += '</div>';
+    });
+
+    container.innerHTML = html;
+  }
+
+  function getRowHighlight(n) {
+    if (selected.length === 0) return '';
+    if (n.finale) return selected.length > 0 ? 'hl-multi' : '';
+
+    var matchingSelected = selected.filter(function(s) {
+      return n.dancers.indexOf(s) !== -1;
+    });
+
+    if (matchingSelected.length === 0) return '';
+    if (matchingSelected.length > 1) return 'hl-multi';
+    return 'hl-' + getColorIndex(matchingSelected[0]);
+  }
+
+  // ── Legend rendering ──────────────────────────────────────────────────────
+  function renderLegend() {
+    var legend = document.getElementById('legend');
+    if (selected.length === 0) { legend.innerHTML = ''; return; }
+
+    var html = '';
+    selected.forEach(function(name) {
+      var idx = getColorIndex(name);
+      var p = PALETTE[idx - 1];
+      var isDark = document.documentElement.getAttribute('data-theme') === 'dark';
+      var dotColor = p[8];
+      html += '<div class="legend-item">';
+      html += '<div class="legend-dot" style="background:' + dotColor + '"></div>';
+      html += name;
+      html += '</div>';
+    });
+
+    if (selected.length > 1) {
+      html += '<div class="legend-item">';
+      html += '<div class="legend-dot" style="background:#5DCAA5"></div>';
+      html += 'Multiple';
+      html += '</div>';
+    }
+
+    legend.innerHTML = html;
+  }
+
+  // ── Selector widget ───────────────────────────────────────────────────────
+  var ddOpen = false;
+  var ddFocusIdx = -1;
+  var filterText = '';
+
+  function buildSelector() {
+    var bar = document.getElementById('selector-bar');
+    bar.innerHTML =
+      '<div class="sel-row">' +
+        '<div class="selector-field" id="sel-field">' +
+          '<div id="sel-chips"></div>' +
+          '<input class="selector-input" id="sel-input" type="text" placeholder="Search for a dancer…" autocomplete="off" />' +
+        '</div>' +
+        '<button class="clear-btn" id="clear-btn" onclick="showClearModal()">Clear</button>' +
+      '</div>' +
+      '<div class="selector-dropdown" id="sel-dropdown"></div>';
+
+    document.getElementById('sel-field').addEventListener('click', function(e) {
+      if (e.target.classList.contains('chip-x')) return;
+      document.getElementById('sel-input').focus();
+      openDropdown();
+    });
+
+    var input = document.getElementById('sel-input');
+    input.addEventListener('input', function() {
+      filterText = this.value;
+      ddFocusIdx = -1;
+      renderDropdown();
+      openDropdown();
+    });
+
+    input.addEventListener('keydown', function(e) {
+      var items = getFilteredDancers();
+      if (e.key === 'ArrowDown') {
+        e.preventDefault();
+        ddFocusIdx = Math.min(ddFocusIdx + 1, items.length - 1);
+        renderDropdown();
+      } else if (e.key === 'ArrowUp') {
+        e.preventDefault();
+        ddFocusIdx = Math.max(ddFocusIdx - 1, -1);
+        renderDropdown();
+      } else if (e.key === 'Enter') {
+        e.preventDefault();
+        if (ddFocusIdx >= 0 && ddFocusIdx < items.length) {
+          toggleDancer(items[ddFocusIdx]);
+        }
+      } else if (e.key === 'Escape') {
+        closeDropdown();
+        input.blur();
+      }
+    });
+
+    input.addEventListener('focus', function() { openDropdown(); });
+
+    document.addEventListener('click', function(e) {
+      if (!document.getElementById('selector-bar').contains(e.target)) {
+        closeDropdown();
+      }
+    });
+
+    renderChips();
+    renderDropdown();
+  }
+
+  function getFilteredDancers() {
+    if (!filterText) return ALL_DANCERS;
+    var q = filterText.toLowerCase();
+    return ALL_DANCERS.filter(function(d) { return d.toLowerCase().indexOf(q) !== -1; });
+  }
+
+  function renderDropdown() {
+    var dd = document.getElementById('sel-dropdown');
+    var items = getFilteredDancers();
+    if (items.length === 0) {
+      dd.innerHTML = '<div class="dd-empty">No dancers found</div>';
+      return;
+    }
+    var html = '';
+    items.forEach(function(name, i) {
+      var isSel = selected.indexOf(name) !== -1;
+      var isFocused = i === ddFocusIdx;
+      var idx = isSel ? getColorIndex(name) : 0;
+      var p = idx ? PALETTE[idx - 1] : null;
+      var isDark = document.documentElement.getAttribute('data-theme') === 'dark';
+      var checkStyle = p ? ('background:' + (isDark ? p[4] : p[0]) + ';border-color:' + (isDark ? p[6] : p[2]) + ';color:' + (isDark ? p[6] : p[2])) : '';
+      html += '<div class="dd-item' + (isSel ? ' selected' : '') + (isFocused ? ' focused' : '') + '" data-name="' + name.replace(/"/g,'&quot;') + '">';
+      html += '<div class="dd-check" style="' + checkStyle + '">' + (isSel ? '&#10003;' : '') + '</div>';
+      html += name;
+      html += '</div>';
+    });
+    dd.innerHTML = html;
+
+    dd.querySelectorAll('.dd-item').forEach(function(el) {
+      el.addEventListener('mousedown', function(e) {
+        e.preventDefault();
+        toggleDancer(el.getAttribute('data-name'));
+      });
+    });
+
+    if (ddFocusIdx >= 0) {
+      var focused = dd.querySelectorAll('.dd-item')[ddFocusIdx];
+      if (focused) focused.scrollIntoView({block:'nearest'});
+    }
+  }
+
+  function renderChips() {
+    var chips = document.getElementById('sel-chips');
+    var html = '';
+    selected.forEach(function(name) {
+      var idx = getColorIndex(name);
+      var p = PALETTE[idx - 1];
+      var isDark = document.documentElement.getAttribute('data-theme') === 'dark';
+      var bg   = isDark ? p[4] : p[0];
+      var text = isDark ? p[6] : p[2];
+      html += '<span class="chip" style="--chip-bg:' + bg + ';--chip-text:' + text + '">';
+      html += name;
+      html += '<button class="chip-x" data-name="' + name.replace(/"/g,'&quot;') + '" aria-label="Remove ' + name + '">&times;</button>';
+      html += '</span>';
+    });
+    chips.innerHTML = html;
+
+    chips.querySelectorAll('.chip-x').forEach(function(btn) {
+      btn.addEventListener('click', function(e) {
+        e.stopPropagation();
+        toggleDancer(btn.getAttribute('data-name'));
+      });
+    });
+
+    var clearBtn = document.getElementById('clear-btn');
+    if (clearBtn) {
+      if (selected.length > 0) clearBtn.classList.add('visible');
+      else clearBtn.classList.remove('visible');
+    }
+  }
+
+  function showClearModal() {
+    document.getElementById('clear-modal').classList.add('open');
+  }
+
+  function closeClearModal() {
+    document.getElementById('clear-modal').classList.remove('open');
+  }
+
+  function confirmClear() {
+    selected = [];
+    colorMap = {};
+    nextColor = 0;
+    saveState();
+    closeClearModal();
+    renderChips();
+    renderDropdown();
+    renderLegend();
+    renderRows();
+  }
+
+  function toggleDancer(name) {
+    var idx = selected.indexOf(name);
+    if (idx === -1) {
+      selected.push(name);
+      getColorIndex(name);
+    } else {
+      selected.splice(idx, 1);
+      delete colorMap[name];
+      nextColor = 0;
+      // Reassign colors in order
+      colorMap = {};
+      nextColor = 0;
+      selected.forEach(function(d) { getColorIndex(d); });
+    }
+    saveState();
+    renderChips();
+    renderDropdown();
+    renderLegend();
+    renderRows();
+  }
+
+  function openDropdown() {
+    ddOpen = true;
+    renderDropdown();
+    document.getElementById('sel-dropdown').classList.add('open');
+  }
+
+  function closeDropdown() {
+    ddOpen = false;
+    document.getElementById('sel-dropdown').classList.remove('open');
+    filterText = '';
+    document.getElementById('sel-input').value = '';
+    ddFocusIdx = -1;
+  }
+
+  // ── Persistence ───────────────────────────────────────────────────────────
+  function saveState() {
+    try { localStorage.setItem('recital-highlights', JSON.stringify(selected)); } catch(e){}
+  }
+
+  function loadState() {
+    try {
+      var saved = localStorage.getItem('recital-highlights');
+      if (saved) {
+        var names = JSON.parse(saved);
+        names.forEach(function(name) {
+          if (ALL_DANCERS.indexOf(name) !== -1 && selected.indexOf(name) === -1) {
+            selected.push(name);
+            getColorIndex(name);
+          }
+        });
+      }
+    } catch(e){}
+  }
+
+  // ── Theme toggle ──────────────────────────────────────────────────────────
+  var html = document.documentElement;
+  var icon = document.getElementById('toggle-icon');
+  var label = document.getElementById('toggle-label');
+  var savedTheme = localStorage.getItem('recital-theme');
+  if (savedTheme) { html.setAttribute('data-theme', savedTheme); }
+
+  function toggleTheme() {
+    var next = html.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+    html.setAttribute('data-theme', next);
+    localStorage.setItem('recital-theme', next);
+    updateCSSVars();
+    renderChips();
+    renderDropdown();
+    renderLegend();
+    renderRows();
     updateButton();
-    function toggleTheme() {
-      var next = html.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
-      html.setAttribute('data-theme', next);
-      localStorage.setItem('recital-theme', next);
-      updateButton();
-    }
-    function updateButton() {
-      var dark = html.getAttribute('data-theme') === 'dark';
-      icon.textContent = dark ? '☀️' : '🌙';
-      label.textContent = dark ? 'Switch to light mode' : 'Switch to dark mode';
-    }
+  }
+
+  function updateButton() {
+    var dark = html.getAttribute('data-theme') === 'dark';
+    icon.textContent = dark ? '☀️' : '🌙';
+    label.textContent = dark ? 'Switch to light mode' : 'Switch to dark mode';
+  }
+
+  // ── Init ──────────────────────────────────────────────────────────────────
+  updateCSSVars();
+  updateButton();
+  loadState();
+  buildSelector();
+  renderRows();
+  renderLegend();
   </script>
 
 </body>
