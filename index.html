@@ -484,6 +484,38 @@
       text-transform: uppercase;
     }
 
+    .venmo-footer {
+      max-width: 680px;
+      margin: 1.5rem auto 0.5rem;
+      text-align: center;
+    }
+
+    .venmo-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 0.55rem 1.1rem;
+      border-radius: 24px;
+      text-decoration: none;
+      border: 1px solid var(--border-light);
+      color: var(--text-secondary);
+      font-family: 'Roboto', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      font-size: 13px;
+      transition: border-color 0.15s, color 0.15s, background 0.15s;
+    }
+
+    .venmo-link:hover {
+      border-color: var(--border-main);
+      color: var(--text-primary);
+      background: var(--bg-subtle);
+    }
+
+    .venmo-logo {
+      width: 18px;
+      height: 18px;
+      flex-shrink: 0;
+    }
+
     @media (max-width: 480px) {
       .row { grid-template-columns: 28px 1fr; }
       .row-group { display: none; }
@@ -521,6 +553,17 @@
     </div>
     <div class="legend" id="legend"></div>
     <div id="program-rows"></div>
+  </div>
+
+  <div class="venmo-footer">
+    <a class="venmo-link" href="https://venmo.com/u/grntbnsn" target="_blank" rel="noopener noreferrer">
+      <svg class="venmo-logo" viewBox="0 0 111 111" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <rect width="111" height="111" rx="20" fill="#3D95CE"/>
+        <path d="M80.5 18c2.6 4.3 3.8 8.7 3.8 14.3 0 17.8-15.2 41-27.6 57.3H29.5L18 20.9l27-2.6 6 48.8C57.4 56.4 64.4 38.9 64.4 27c0-5.8-1-9.8-2.5-13.2L80.5 18z" fill="white"/>
+      </svg>
+      Programs always run out, so I made this. <br>
+      If you found it useful, I appreciate any donations.
+    </a>
   </div>
 
   <script>
