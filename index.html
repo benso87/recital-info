@@ -820,8 +820,14 @@
         renderDropdown();
       } else if (e.key === 'Enter') {
         e.preventDefault();
-        if (ddFocusIdx >= 0 && ddFocusIdx < items.length) {
-          toggleDancer(items[ddFocusIdx]);
+        var targetIdx = ddFocusIdx >= 0 ? ddFocusIdx : 0;
+        if (targetIdx < items.length) {
+          var targetName = items[targetIdx];
+          if (selected.indexOf(targetName) === -1) {
+            toggleDancer(targetName);
+          }
+          closeDropdown();
+          input.blur();
         }
       } else if (e.key === 'Escape') {
         closeDropdown();
