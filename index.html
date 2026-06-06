@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Career Day — Spring Recital 2026</title>
+  <title>CSDA Spring Recital 2026</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap" rel="stylesheet">
@@ -492,34 +492,6 @@
       text-transform: uppercase;
     }
 
-    .venmo-footer {
-      max-width: 680px;
-      margin: 1.5rem auto 0.5rem;
-      text-align: center;
-    }
-
-    .venmo-link {
-      text-decoration: none;
-      font-size: 1.5rem;
-    }
-
-    .view-count {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      min-width: 1.6rem;
-      height: 1.6rem;
-      padding: 0 0.35rem;
-      border-radius: 999px;
-      background: var(--bg-subtle);
-      border: 1px solid var(--border-light);
-      color: var(--text-secondary);
-      font-family: 'Roboto', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-      font-size: 11px;
-      vertical-align: middle;
-      margin-left: 6px;
-    }
-
     @media (max-width: 480px) {
       .row { grid-template-columns: 28px 1fr; }
       .row-group { display: none; }
@@ -557,11 +529,6 @@
     </div>
     <div class="legend" id="legend"></div>
     <div id="program-rows"></div>
-  </div>
-
-  <div class="venmo-footer">
-    <!--<a class="venmo-link" href="https://venmo.com/u/grntbnsn" target="_blank" rel="noopener noreferrer">☕</a>-->
-    <span class="view-count" id="view-count"></span>
   </div>
 
   <script>
@@ -1052,17 +1019,6 @@
   buildSelector();
   renderRows();
   renderLegend();
-
-  fetch('https://hits.sh/recital.grntbnsn.com.svg')
-    .then(function(r) { return r.text(); })
-    .then(function(svg) {
-      var matches = svg.match(/<text[^>]*>(\d+)<\/text>/g);
-      if (matches) {
-        var last = matches[matches.length - 1].match(/>(\d+)</);
-        if (last) document.getElementById('view-count').textContent = last[1];
-      }
-    })
-    .catch(function() {});
   </script>
 
 </body>
