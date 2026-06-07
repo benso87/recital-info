@@ -559,7 +559,18 @@
   </div>
 
   <footer style="max-width:680px;margin:1.5rem auto 0.5rem;text-align:center;font-size:11px;color:var(--text-muted);font-family:'Roboto',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;">
-    Made by Sara Benson's husband
+    <span id="admin-trigger" style="cursor:default;">Made by Sara Benson's husband</span>
+    <script>
+      (function() {
+        var count = 0, timer;
+        document.getElementById('admin-trigger').addEventListener('click', function() {
+          count++;
+          clearTimeout(timer);
+          if (count >= 5) { count = 0; window.open('/admin', '_blank'); }
+          else { timer = setTimeout(function() { count = 0; }, 1500); }
+        });
+      })();
+    </script>
   </footer>
 
   <script>
