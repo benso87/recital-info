@@ -116,6 +116,45 @@
 
     .toggle-btn:active { opacity: 0.75; }
 
+    #help-btn { font-size: 20px; font-weight: 500; }
+
+    .help-wrap {
+      flex-shrink: 0;
+      width: 38px;
+      position: relative;
+    }
+
+    .help-tip {
+      position: absolute;
+      top: calc(100% + 8px);
+      left: 0;
+      width: 240px;
+      max-width: 75vw;
+      padding: 10px 12px;
+      background: var(--bg-card);
+      color: var(--text-primary);
+      border: 1.5px solid var(--border-main);
+      border-radius: 10px;
+      font-family: 'Roboto', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      font-size: 13px;
+      line-height: 1.45;
+      text-align: left;
+      box-shadow: 0 4px 16px rgba(0,0,0,0.18);
+      z-index: 150;
+      display: none;
+    }
+
+    .help-tip.open { display: block; }
+
+    .help-tip::before {
+      content: '';
+      position: absolute;
+      bottom: 100%;
+      left: 13px;
+      border: 6px solid transparent;
+      border-bottom-color: var(--border-main);
+    }
+
     /* ── Selector widget ── */
     .selector-bar {
       max-width: 680px;
@@ -529,7 +568,12 @@
 <body>
 
   <div class="toggle-bar">
-    <div style="width:38px;flex-shrink:0;"></div>
+    <div class="help-wrap">
+      <button class="toggle-btn" onclick="toggleHelp(event)" id="help-btn" aria-label="How highlighting works">?</button>
+      <div class="help-tip" id="help-tip">
+        Pick your dancer(s) in the search box, then their numbers will be highlighted in the program below.
+      </div>
+    </div>
     <span class="silence-note">🔇 Don't forget to silence your phone 🔇</span>
     <button class="toggle-btn" onclick="toggleTheme()" id="toggle-btn" aria-label="Toggle dark mode">
       <span id="toggle-icon">☀️</span>
@@ -1062,6 +1106,19 @@
     var dark = html.getAttribute('data-theme') === 'dark';
     icon.textContent = dark ? '☀️' : '🌙';
   }
+
+  // ── Help tip ──────────────────────────────────────────────────────────────
+  function toggleHelp(e) {
+    e.stopPropagation();
+    document.getElementById('help-tip').classList.toggle('open');
+  }
+
+  document.addEventListener('click', function(e) {
+    var wrap = document.querySelector('.help-wrap');
+    if (wrap && !wrap.contains(e.target)) {
+      document.getElementById('help-tip').classList.remove('open');
+    }
+  });
 
   // ── Live marker ───────────────────────────────────────────────────────────
   function setLiveMarker(num) {
