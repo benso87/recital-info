@@ -509,21 +509,6 @@
       .title-main { font-size: 22px; }
       .legend { gap: 10px; }
     }
-
-    .row { position: relative; }
-
-    .live-now::before {
-      content: '';
-      position: absolute;
-      left: 0.5rem;
-      top: 50%;
-      transform: translateY(-50%);
-      width: 8px;
-      height: 8px;
-      border-radius: 50%;
-      background: #22c55e;
-      box-shadow: 0 0 5px #22c55e99;
-    }
   </style>
 </head>
 <body>
@@ -673,7 +658,6 @@
   var selected = []; // array of dancer names in order selected
   var colorMap = {}; // dancer name -> palette index (1-based)
   var nextColor = 0;
-  var currentLiveNum = null;
 
   function getColorIndex(name) {
     if (!colorMap[name]) {
@@ -746,10 +730,6 @@
     });
 
     container.innerHTML = html;
-    if (currentLiveNum !== null) {
-      var liveRow = container.querySelector('.row[data-num="' + currentLiveNum + '"]');
-      if (liveRow) liveRow.classList.add('live-now');
-    }
   }
 
   function isRiotOnly(name) {
@@ -1052,28 +1032,6 @@
     icon.textContent = dark ? '☀️' : '🌙';
   }
 
-  // ── Live marker ───────────────────────────────────────────────────────────
-  function setLiveMarker(num) {
-    if (currentLiveNum === num) return;
-    if (currentLiveNum !== null) {
-      var old = document.querySelector('.row[data-num="' + currentLiveNum + '"]');
-      if (old) old.classList.remove('live-now');
-    }
-    currentLiveNum = num;
-    var row = document.querySelector('.row[data-num="' + num + '"]');
-    if (row) row.classList.add('live-now');
-  }
-
-  function fetchLiveMarker() {
-    var url = 'https://raw.githubusercontent.com/benso87/recital-info/main/current.json?_cb=' + Date.now();
-    fetch(url)
-      .then(function(r) { return r.json(); })
-      .then(function(data) {
-        if (typeof data.current === 'number') setLiveMarker(data.current);
-      })
-      .catch(function() {});
-  }
-
   // ── Init ──────────────────────────────────────────────────────────────────
   updateCSSVars();
   updateButton();
@@ -1081,8 +1039,6 @@
   buildSelector();
   renderRows();
   renderLegend();
-  fetchLiveMarker();
-  setInterval(fetchLiveMarker, 15000);
   </script>
 
 </body>
