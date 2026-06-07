@@ -28,12 +28,11 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
         with:
-          fetch-depth: 1
+          fetch-depth: 0
 
       - name: Run Claude Code
         id: claude
         uses: anthropics/claude-code-action@v1
         with:
           anthropic_api_key: ${{ secrets.ANTHROPIC_API_KEY }}
-          claude_args: |
-            --system-prompt "Always create a new branch before making any changes. Name it claude/<short-kebab-description>. Never commit to main directly. When your work is complete, open a pull request and post a comment on the original issue or PR mentioning @benso87 so they can review."
+          model: claude-sonnet-4-6
