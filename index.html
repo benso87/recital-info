@@ -1108,17 +1108,28 @@
   }
 
   // ── Help tip ──────────────────────────────────────────────────────────────
+  var helpAutoCloseTimer = null;
+
+  function closeHelp() {
+    document.getElementById('help-tip').classList.remove('open');
+    clearTimeout(helpAutoCloseTimer);
+    helpAutoCloseTimer = null;
+  }
+
   function toggleHelp(e) {
     e.stopPropagation();
+    clearTimeout(helpAutoCloseTimer);
+    helpAutoCloseTimer = null;
     document.getElementById('help-tip').classList.toggle('open');
   }
 
   document.addEventListener('click', function(e) {
     var wrap = document.querySelector('.help-wrap');
     if (wrap && !wrap.contains(e.target)) {
-      document.getElementById('help-tip').classList.remove('open');
+      closeHelp();
     }
   });
+
 
   // ── Live marker ───────────────────────────────────────────────────────────
   function setLiveMarker(num) {
@@ -1145,6 +1156,10 @@
   updateCSSVars();
   updateButton();
   loadState();
+  if (selected.length === 0) {
+    document.getElementById('help-tip').classList.add('open');
+    helpAutoCloseTimer = setTimeout(closeHelp, 5000);
+  }
   buildSelector();
   renderRows();
   renderLegend();
