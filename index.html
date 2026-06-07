@@ -1065,14 +1065,11 @@
   }
 
   function fetchLiveMarker() {
-    var url = 'https://api.github.com/repos/benso87/recital-info/contents/current.json'
-      + '?ref=claude%2Flive-marker-9lyXj&_cb=' + Date.now();
+    var url = 'https://raw.githubusercontent.com/benso87/recital-info/main/current.json?_cb=' + Date.now();
     fetch(url)
       .then(function(r) { return r.json(); })
       .then(function(data) {
-        if (!data.content) return;
-        var json = JSON.parse(atob(data.content.replace(/\s/g, '')));
-        if (typeof json.current === 'number') setLiveMarker(json.current);
+        if (typeof data.current === 'number') setLiveMarker(data.current);
       })
       .catch(function() {});
   }
